@@ -6,10 +6,16 @@ import pandas as pd
 def parse_dates(df: pd.DataFrame) -> pd.DataFrame:
     """Normalise ``order_date`` into real datetimes.
 
-    Rows whose date can't be parsed are dropped.
+    Input dates arrive in several formats (``2026-01-05``, ``05/01/2026``,
+    ``Jan 6 2026``), so parsing is tolerant rather than tied to one fixed
+    format. Ambiguous ``DD/MM`` vs ``MM/DD`` slashed dates are treated as
+    day-first, matching the source system's convention. Rows whose date
+    still can't be parsed are dropped.
     """
     df = df.copy()
-    df["order_date"] = pd.to_datetime(df["order_date"], format="%Y-%m-%d", errors="coerce")
+    df["order_date"] = pd.to_datetime(
+        df["order_date"], errors="coerce", dayfirst=True, format="mixed"
+    )
     return df.dropna(subset=["order_date"])
 
 

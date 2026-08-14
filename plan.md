@@ -223,8 +223,8 @@ Check off as each step is completed and committed (by you).
 - [x] 3. feat: robust CSV reader
 - [x] 4. chore: add GitHub Actions CI
 - [x] 5. test: validator tests
-- [ ] 6. feat: date parsing in validator
-- [ ] 7. fix: handle mixed date formats
+- [x] 6. feat: date parsing in validator
+- [x] 7. fix: handle mixed date formats
 - [ ] 8. feat: amount cleaning
 - [ ] 9. feat: revenue by product
 - [ ] 10. feat: revenue by month
