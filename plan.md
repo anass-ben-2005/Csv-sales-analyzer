@@ -21,8 +21,11 @@ point in this project.
   commit, and don't split one row across two commits.
 - **You control git.** I will prepare/edit files for a step and tell you it's
   ready. You review, then run the `git add` / `git commit` line I give you
-  (I'll give you the exact message from the table, with backdating env vars
-  per §3). I never commit or push on my own.
+  (plain commands, no `GIT_AUTHOR_DATE`/`GIT_COMMITTER_DATE` — see note in
+  §3). I never commit or push on my own.
+- **README stays professional throughout.** After each step, the README is
+  kept up to date and polished — badges, clear usage, project structure —
+  the way a real company project would maintain it, not left as a stub.
 - **No network calls anywhere in the code.** All data is local, in
   `sample_data/`.
 - **Pure Python 3.11+, pandas, click, pytest, ruff** — no other frameworks.
@@ -100,10 +103,16 @@ normalisation ordering, empty-group crash, encoding fallback.
 
 ## 3. Commit spacing (do not skip)
 
-Spread the 20 commits across **~6 days**. If building in one sitting, backdate
-with `GIT_AUTHOR_DATE` / `GIT_COMMITTER_DATE`, e.g.:
+Spread the 20 commits across **~6 days**. The original idea was to backdate
+with `GIT_AUTHOR_DATE` / `GIT_COMMITTER_DATE` when building in one sitting —
+**that's no longer how commands are given here.** Per your instruction, I now
+give plain `git add` / `git commit` lines with no date env vars. If you still
+want the backdated/spread-out history described below, add the env vars
+yourself when you run the commit; otherwise commits will simply land on
+today's actual date.
 
 ```bash
+# optional, if you want to backdate it yourself:
 GIT_AUTHOR_DATE="2026-08-06T14:00:00" GIT_COMMITTER_DATE="2026-08-06T14:00:00" \
   git commit -m "chore: project skeleton and README"
 ```
@@ -209,9 +218,9 @@ jobs:
 
 Check off as each step is completed and committed (by you).
 
-- [ ] 1. chore: project skeleton and README
-- [ ] 2. data: add messy sample sales CSV
-- [ ] 3. feat: robust CSV reader
+- [x] 1. chore: project skeleton and README
+- [x] 2. data: add messy sample sales CSV
+- [x] 3. feat: robust CSV reader
 - [ ] 4. chore: add GitHub Actions CI
 - [ ] 5. test: validator tests
 - [ ] 6. feat: date parsing in validator
