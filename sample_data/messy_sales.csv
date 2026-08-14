@@ -1,0 +1,29 @@
+order_id,order_date,product,region,amount
+ORD001,2026-01-05,Widget A,North,120.50
+ORD002,2026-01-06,Widget B,South,89.99
+ORD003,05/01/2026,Gadget Pro,East,250.00
+ORD004,2026-01-08,Widget A,north,75.25
+ORD005,Jan 6 2026,Gizmo Max,West,310.10
+ORD006,2026-01-10,Widget B,NORTH,45.00
+ORD007,2026-01-11,Gadget Pro,South,
+ORD008,12/01/2026,Widget A,East,199.99
+ORD009,2026-01-13,Thingamajig,West,-50.00
+ORD010,2026-01-14,Widget C,North,88.88
+ORD011,Jan 15 2026,Gizmo Max,south,120.00
+ORD012,2026-01-16,Widget B,East,
+ORD013,16/01/2026,Gadget Pro,North,275.50
+ORD014,2026-01-17,Café Mug,West,15.75
+ORD015,2026-01-18,Widget A,NORTH,99.00
+ORD016,18/01/2026,Thingamajig,South,60.20
+ORD017,2026-01-19,Gizmo Max,East,410.00
+ORD018,Jan 20 2026,Widget C,north,55.55
+ORD019,2026-01-21,Gadget Pro,West,300.00
+ORD020,2026-01-22,Widget B,North,80.80
+ORD021,01/02/2026,Widget A,South,145.00
+ORD022,2026-02-02,Thingamajig,East,70.70
+ORD023,Feb 3 2026,Gizmo Max,NORTH,500.00
+ORD024,2026-02-04,Widget C,West,65.40
+ORD025,2026-02-05,Gadget Pro,south,210.00
+ORD026,06/02/2026,Widget B,East,95.95
+ORD027,2026-02-07,Widget A,North,130.30
+ORD028,2026-02-08,Gizmo Max,West,275.00
