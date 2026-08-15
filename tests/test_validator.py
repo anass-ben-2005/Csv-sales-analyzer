@@ -26,6 +26,14 @@ def test_clean_amounts_drops_null_and_negative():
     assert (result["amount"] >= 0).all()
 
 
+def test_clean_amounts_handles_formatting_noise():
+    df = pd.DataFrame({"amount": ["1,234.50", "  99.99  ", "2,000"]})
+
+    result = clean_amounts(df)
+
+    assert list(result["amount"]) == [1234.50, 99.99, 2000.0]
+
+
 def test_normalise_region_collapses_casing():
     df = pd.DataFrame({"region": ["North", "north", "NORTH", "south"]})
 

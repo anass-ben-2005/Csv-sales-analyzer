@@ -39,7 +39,8 @@ you can go from a raw export to a trustworthy revenue report in one command.
   Latin-1 automatically if the file isn't valid UTF-8.
 - **Tolerant date parsing** — normalizes `2026-01-05`, `05/01/2026`, and
   `Jan 6 2026`-style dates into a single consistent format.
-- **Amount cleaning** — coerces amounts to numeric and drops invalid rows
+- **Amount cleaning** — strips formatting noise (thousands-separator commas,
+  stray whitespace), coerces amounts to numeric, and drops invalid rows
   (missing or negative values).
 - **Region normalization** — collapses casing variants like `north`,
   `NORTH`, and `North` into one canonical group.

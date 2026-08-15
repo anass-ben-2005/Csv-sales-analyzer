@@ -31,9 +31,15 @@ def parse_dates(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def clean_amounts(df: pd.DataFrame) -> pd.DataFrame:
-    """Coerce ``amount`` to numeric and drop null/negative rows."""
+    """Coerce ``amount`` to numeric and drop null/negative rows.
+
+    Strips common formatting noise first — surrounding whitespace and
+    thousands-separator commas (e.g. ``"1,234.50"``) — so values exported
+    from spreadsheets coerce cleanly instead of being dropped as invalid.
+    """
     df = df.copy()
-    df["amount"] = pd.to_numeric(df["amount"], errors="coerce")
+    cleaned = df["amount"].astype(str).str.strip().str.replace(",", "", regex=False)
+    df["amount"] = pd.to_numeric(cleaned, errors="coerce")
     df = df.dropna(subset=["amount"])
     return df[df["amount"] >= 0]
 

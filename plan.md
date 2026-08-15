@@ -241,7 +241,7 @@ Check off as each step is completed and committed (by you).
 - [x] 5. test: validator tests
 - [x] 6. feat: date parsing in validator
 - [x] 7. fix: handle mixed date formats
-- [ ] 8. feat: amount cleaning
+- [x] 8. feat: amount cleaning
 - [ ] 9. feat: revenue by product
 - [ ] 10. feat: revenue by month
 - [ ] 11. fix: group by year-month not full date
