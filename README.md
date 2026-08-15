@@ -1,6 +1,6 @@
 # csv-sales-analyzer
 
-![CI](https://github.com/YOUR_GITHUB_USERNAME/csv-sales-analyzer/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/anass-ben-2005/Csv-sales-analyzer/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
 
 A command-line tool for turning messy, real-world sales CSV exports into
@@ -54,7 +54,7 @@ you can go from a raw export to a trustworthy revenue report in one command.
 Requires Python 3.11+.
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/csv-sales-analyzer.git
+git clone https://github.com/anass-ben-2005/Csv-sales-analyzer.git
 cd csv-sales-analyzer
 pip install -r requirements.txt
 ```
