@@ -214,6 +214,22 @@ jobs:
 
 ---
 
+## 7b. Unplanned hotfixes (deviations from the 20-step plan)
+
+Real bugs that surfaced from actually running CI, on top of the intentionally
+staged red/green cycles in §2. These are genuine mistakes, not scripted ones,
+so they get their own honest commit rather than being folded silently into a
+planned step.
+
+- **After step 7** (`fix: handle mixed date formats`): that commit passed
+  locally but **failed in real CI**. Root cause: `requirements.txt` is
+  unpinned, and CI installed pandas 3.0.5 (vs. 2.2.3 cached locally); pandas
+  3.0's `format="mixed"` + `dayfirst=True` inference changed behavior and
+  started mis-parsing even the unambiguous ISO date. Fixed by parsing each
+  known date format explicitly in turn instead of relying on pandas's format
+  inference — deterministic across pandas versions. Verified locally against
+  both pandas 2.2.3 and 3.0.5 before committing.
+
 ## 8. Progress tracker
 
 Check off as each step is completed and committed (by you).

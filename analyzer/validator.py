@@ -2,20 +2,31 @@
 
 import pandas as pd
 
+# Known incoming date formats, tried in order. Explicit formats are used
+# instead of pandas's format inference (e.g. `format="mixed"`) because that
+# inference is not stable across pandas versions — it has been observed to
+# mis-parse even unambiguous ISO dates depending on the installed version.
+_DATE_FORMATS = ("%Y-%m-%d", "%d/%m/%Y", "%b %d %Y")
+
 
 def parse_dates(df: pd.DataFrame) -> pd.DataFrame:
     """Normalise ``order_date`` into real datetimes.
 
     Input dates arrive in several formats (``2026-01-05``, ``05/01/2026``,
-    ``Jan 6 2026``), so parsing is tolerant rather than tied to one fixed
-    format. Ambiguous ``DD/MM`` vs ``MM/DD`` slashed dates are treated as
-    day-first, matching the source system's convention. Rows whose date
-    still can't be parsed are dropped.
+    ``Jan 6 2026``). Each known format is tried in turn against whatever
+    hasn't parsed yet, so mixing formats within one column works. Rows
+    whose date still can't be parsed by any known format are dropped.
     """
     df = df.copy()
-    df["order_date"] = pd.to_datetime(
-        df["order_date"], errors="coerce", dayfirst=True, format="mixed"
-    )
+    raw = df["order_date"].astype(str)
+    parsed = pd.Series(pd.NaT, index=df.index, dtype="datetime64[ns]")
+
+    for fmt in _DATE_FORMATS:
+        unparsed = parsed.isna()
+        attempt = pd.to_datetime(raw[unparsed], format=fmt, errors="coerce")
+        parsed.loc[attempt.index] = attempt
+
+    df["order_date"] = parsed
     return df.dropna(subset=["order_date"])
 
 
