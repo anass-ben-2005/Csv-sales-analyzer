@@ -15,9 +15,15 @@ def revenue_by_product(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def revenue_by_month(df: pd.DataFrame) -> pd.DataFrame:
-    """Total revenue per calendar month."""
+    """Total revenue per calendar month, as ``YYYY-MM``.
+
+    Groups by year-month, not the full date — multiple orders on different
+    days of the same month must land in the same bucket.
+    """
+    df = df.copy()
+    df["month"] = df["order_date"].dt.strftime("%Y-%m")
     return (
-        df.groupby("order_date", as_index=False)["amount"]
+        df.groupby("month", as_index=False)["amount"]
         .sum()
-        .rename(columns={"order_date": "month", "amount": "total"})
+        .rename(columns={"amount": "total"})
     )

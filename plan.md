@@ -244,7 +244,7 @@ Check off as each step is completed and committed (by you).
 - [x] 8. feat: amount cleaning
 - [x] 9. feat: revenue by product
 - [x] 10. feat: revenue by month
-- [ ] 11. fix: group by year-month not full date
+- [x] 11. fix: group by year-month not full date
 - [ ] 12. feat: revenue by region
 - [ ] 13. fix: normalise region before grouping
 - [ ] 14. feat: markdown + json reporter
