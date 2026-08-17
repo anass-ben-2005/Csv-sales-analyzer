@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-from analyzer.aggregator import revenue_by_month, revenue_by_product
+from analyzer.aggregator import revenue_by_month, revenue_by_product, revenue_by_region
 
 
 def test_revenue_by_product_sums_and_sorts():
@@ -35,3 +35,18 @@ def test_revenue_by_month_groups_by_calendar_month():
     assert list(result.columns) == ["month", "total"]
     assert list(result["month"]) == ["2026-01", "2026-02"]
     assert list(result["total"]) == [150.0, 100.0]
+
+
+def test_revenue_by_region_collapses_casing():
+    df = pd.DataFrame(
+        {
+            "region": ["North", "north", "NORTH", "South"],
+            "amount": [100.0, 50.0, 25.0, 40.0],
+        }
+    )
+
+    result = revenue_by_region(df)
+
+    assert list(result.columns) == ["region", "total"]
+    assert set(result["region"]) == {"North", "South"}
+    assert float(result.loc[result["region"] == "North", "total"].iloc[0]) == 175.0

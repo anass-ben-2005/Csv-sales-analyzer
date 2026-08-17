@@ -27,3 +27,14 @@ def revenue_by_month(df: pd.DataFrame) -> pd.DataFrame:
         .sum()
         .rename(columns={"amount": "total"})
     )
+
+
+def revenue_by_region(df: pd.DataFrame) -> pd.DataFrame:
+    """Total revenue per region, highest revenue first."""
+    return (
+        df.groupby("region", as_index=False)["amount"]
+        .sum()
+        .rename(columns={"amount": "total"})
+        .sort_values("total", ascending=False)
+        .reset_index(drop=True)
+    )
