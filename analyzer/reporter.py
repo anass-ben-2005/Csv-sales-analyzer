@@ -55,8 +55,14 @@ def write_report(summaries: dict[str, pd.DataFrame], out_dir: str) -> None:
 
 
 def summary_line(summaries: dict[str, pd.DataFrame]) -> str:
-    """Build the one-line summary the CLI prints after writing a report."""
+    """Build the one-line summary the CLI prints after writing a report.
+
+    Guards against an empty ``revenue_by_product`` group — e.g. every row
+    got filtered out during validation — instead of crashing on ``iloc[0]``.
+    """
     by_product = summaries["revenue_by_product"]
+    if by_product.empty:
+        return "No valid sales rows found — nothing to report."
     total_revenue = by_product["total"].sum()
     top = by_product.iloc[0]
     return (

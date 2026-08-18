@@ -254,7 +254,7 @@ Check off as each step is completed and committed (by you).
 - [x] 13. fix: normalise region before grouping
 - [x] 14. feat: markdown + json reporter
 - [x] 15. feat: click CLI
-- [ ] 16. fix: guard empty groups in reporter
+- [x] 16. fix: guard empty groups in reporter
 - [ ] 17. test: encoding edge case
 - [ ] 18. fix: encoding fallback in reader
 - [ ] 19. refactor: type hints and docstrings

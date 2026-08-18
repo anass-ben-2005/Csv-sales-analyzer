@@ -48,7 +48,8 @@ you can go from a raw export to a trustworthy revenue report in one command.
   calendar month (`YYYY-MM`, not per-day), and by region (casing-normalized,
   so `north`/`NORTH`/`North` roll up into one group).
 - **Dual-format reporting** — writes both a human-readable Markdown report
-  and a machine-readable JSON report.
+  and a machine-readable JSON report, and handles empty result sets (e.g.
+  every row gets filtered out) gracefully instead of crashing.
 
 ## Installation
 
