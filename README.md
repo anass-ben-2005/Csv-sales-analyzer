@@ -35,8 +35,9 @@ you can go from a raw export to a trustworthy revenue report in one command.
 
 ## Features
 
-- **Encoding-safe ingestion** — reads UTF-8 by default, falls back to
-  Latin-1 automatically if the file isn't valid UTF-8.
+- **Encoding-safe ingestion** — tries UTF-8, then Windows-1252 (the common
+  case for Windows/Excel exports with curly quotes or em-dashes), then
+  falls back to Latin-1 as a final catch-all that never raises.
 - **Tolerant date parsing** — normalizes `2026-01-05`, `05/01/2026`, and
   `Jan 6 2026`-style dates into a single consistent format.
 - **Amount cleaning** — strips formatting noise (thousands-separator commas,

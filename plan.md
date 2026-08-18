@@ -269,7 +269,7 @@ Check off as each step is completed and committed (by you).
 - [x] 15. feat: click CLI
 - [x] 16. fix: guard empty groups in reporter
 - [x] 17. test: encoding edge case
-- [ ] 18. fix: encoding fallback in reader
+- [x] 18. fix: encoding fallback in reader
 - [ ] 19. refactor: type hints and docstrings
 - [ ] 20. chore: pin dependencies and tidy README
 
