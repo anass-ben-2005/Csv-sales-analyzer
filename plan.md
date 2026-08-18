@@ -253,7 +253,7 @@ Check off as each step is completed and committed (by you).
 - [x] 12. feat: revenue by region
 - [x] 13. fix: normalise region before grouping
 - [x] 14. feat: markdown + json reporter
-- [ ] 15. feat: click CLI
+- [x] 15. feat: click CLI
 - [ ] 16. fix: guard empty groups in reporter
 - [ ] 17. test: encoding edge case
 - [ ] 18. fix: encoding fallback in reader

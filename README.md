@@ -72,7 +72,11 @@ writes:
 - `reports/report.md` — a Markdown summary
 - `reports/report.json` — the same summary as structured JSON
 
-The CLI prints a one-line summary to the console when it finishes.
+The CLI prints a one-line summary to the console when it finishes, e.g.:
+
+```
+Processed 7 products, total revenue $4,088.86, top: Gizmo Max ($1,615.10)
+```
 
 ## Project structure
 
