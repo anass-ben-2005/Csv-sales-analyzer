@@ -221,6 +221,11 @@ staged red/green cycles in §2. These are genuine mistakes, not scripted ones,
 so they get their own honest commit rather than being folded silently into a
 planned step.
 
+- **At step 14** (`feat: markdown + json reporter`): the spec's file-structure
+  list (§1) only names `test_reader.py`/`test_validator.py`/`test_aggregator.py`,
+  but the commit table explicitly calls for reporter tests. Added
+  `tests/test_reporter.py` rather than skip coverage to match the listing
+  literally — real test coverage takes priority over an exact file list.
 - **After step 7** (`fix: handle mixed date formats`): that commit passed
   locally but **failed in real CI**. Root cause: `requirements.txt` is
   unpinned, and CI installed pandas 3.0.5 (vs. 2.2.3 cached locally); pandas
@@ -247,7 +252,7 @@ Check off as each step is completed and committed (by you).
 - [x] 11. fix: group by year-month not full date
 - [x] 12. feat: revenue by region
 - [x] 13. fix: normalise region before grouping
-- [ ] 14. feat: markdown + json reporter
+- [x] 14. feat: markdown + json reporter
 - [ ] 15. feat: click CLI
 - [ ] 16. fix: guard empty groups in reporter
 - [ ] 17. test: encoding edge case

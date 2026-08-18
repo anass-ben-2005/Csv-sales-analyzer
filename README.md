@@ -122,10 +122,10 @@ CI runs both of these on every push and pull request via GitHub Actions.
 
 ## Testing
 
-The test suite covers the reader, validator, and aggregator modules,
-including edge cases drawn directly from the messy sample data: mixed date
-formats, missing/negative amounts, inconsistent region casing, and
-non-UTF-8 input.
+The test suite covers the reader, validator, aggregator, and reporter
+modules, including edge cases drawn directly from the messy sample data:
+mixed date formats, missing/negative amounts, inconsistent region casing,
+and non-UTF-8 input.
 
 ```bash
 pytest -q
