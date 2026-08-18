@@ -45,7 +45,8 @@ you can go from a raw export to a trustworthy revenue report in one command.
 - **Region normalization** — collapses casing variants like `north`,
   `NORTH`, and `North` into one canonical group.
 - **Multi-dimensional aggregation** — revenue totals by product, by
-  calendar month (`YYYY-MM`, not per-day), and by region.
+  calendar month (`YYYY-MM`, not per-day), and by region (casing-normalized,
+  so `north`/`NORTH`/`North` roll up into one group).
 - **Dual-format reporting** — writes both a human-readable Markdown report
   and a machine-readable JSON report.
 

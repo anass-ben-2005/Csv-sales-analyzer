@@ -2,6 +2,8 @@
 
 import pandas as pd
 
+from analyzer.validator import normalise_region
+
 
 def revenue_by_product(df: pd.DataFrame) -> pd.DataFrame:
     """Total revenue per product, highest revenue first."""
@@ -30,7 +32,12 @@ def revenue_by_month(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def revenue_by_region(df: pd.DataFrame) -> pd.DataFrame:
-    """Total revenue per region, highest revenue first."""
+    """Total revenue per region, highest revenue first.
+
+    Region casing is normalised before grouping — otherwise casing variants
+    like ``north`` and ``NORTH`` would be counted as separate regions.
+    """
+    df = normalise_region(df)
     return (
         df.groupby("region", as_index=False)["amount"]
         .sum()

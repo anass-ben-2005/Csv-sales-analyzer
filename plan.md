@@ -246,7 +246,7 @@ Check off as each step is completed and committed (by you).
 - [x] 10. feat: revenue by month
 - [x] 11. fix: group by year-month not full date
 - [x] 12. feat: revenue by region
-- [ ] 13. fix: normalise region before grouping
+- [x] 13. fix: normalise region before grouping
 - [ ] 14. feat: markdown + json reporter
 - [ ] 15. feat: click CLI
 - [ ] 16. fix: guard empty groups in reporter
