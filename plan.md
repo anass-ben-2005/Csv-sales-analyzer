@@ -221,6 +221,19 @@ staged red/green cycles in §2. These are genuine mistakes, not scripted ones,
 so they get their own honest commit rather than being folded silently into a
 planned step.
 
+- **At step 17** (`test: encoding edge case`): the spec's own text says this
+  step should fail because "reader still hardcodes utf-8 → `UnicodeDecodeError`"
+  — but the spec's own step 3 already calls for "`reader.py` with encoding
+  fallback", and ours has had a working UTF-8→Latin-1 fallback since step 3.
+  A literal `UnicodeDecodeError` test would simply pass immediately, so
+  there'd be nothing to fix in step 18. Substituted a real, still-uncaught
+  encoding bug instead: Windows-exported CSVs are typically Windows-1252
+  (cp1252), not plain Latin-1 — cp1252 uses the 0x80-0x9F byte range for
+  printable characters (curly quotes, em-dashes) where Latin-1 maps that
+  range to control codes. The current Latin-1 fallback doesn't crash on
+  those bytes, it silently mangles them, so the test checks decoded content
+  rather than expecting an exception. Confirmed the failure is a content
+  mismatch (`\x92` instead of `’`), not a crash, on both pandas versions.
 - **At step 14** (`feat: markdown + json reporter`): the spec's file-structure
   list (§1) only names `test_reader.py`/`test_validator.py`/`test_aggregator.py`,
   but the commit table explicitly calls for reporter tests. Added
@@ -255,7 +268,7 @@ Check off as each step is completed and committed (by you).
 - [x] 14. feat: markdown + json reporter
 - [x] 15. feat: click CLI
 - [x] 16. fix: guard empty groups in reporter
-- [ ] 17. test: encoding edge case
+- [x] 17. test: encoding edge case
 - [ ] 18. fix: encoding fallback in reader
 - [ ] 19. refactor: type hints and docstrings
 - [ ] 20. chore: pin dependencies and tidy README
