@@ -5,7 +5,7 @@ import pandas as pd
 from analyzer.aggregator import revenue_by_month, revenue_by_product, revenue_by_region
 
 
-def test_revenue_by_product_sums_and_sorts():
+def test_revenue_by_product_sums_and_sorts() -> None:
     df = pd.DataFrame(
         {
             "product": ["Widget A", "Widget B", "Widget A", "Widget B", "Widget B"],
@@ -20,7 +20,7 @@ def test_revenue_by_product_sums_and_sorts():
     assert list(result["total"]) == [125.0, 110.0]
 
 
-def test_revenue_by_month_groups_by_calendar_month():
+def test_revenue_by_month_groups_by_calendar_month() -> None:
     df = pd.DataFrame(
         {
             "order_date": pd.to_datetime(
@@ -37,7 +37,7 @@ def test_revenue_by_month_groups_by_calendar_month():
     assert list(result["total"]) == [150.0, 100.0]
 
 
-def test_revenue_by_region_collapses_casing():
+def test_revenue_by_region_collapses_casing() -> None:
     df = pd.DataFrame(
         {
             "region": ["North", "north", "NORTH", "South"],

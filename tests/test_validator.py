@@ -5,7 +5,7 @@ import pandas as pd
 from analyzer.validator import clean_amounts, normalise_region, parse_dates, validate
 
 
-def test_parse_dates_handles_mixed_formats():
+def test_parse_dates_handles_mixed_formats() -> None:
     df = pd.DataFrame({"order_date": ["2026-01-05", "05/01/2026", "Jan 6 2026"]})
 
     result = parse_dates(df)
@@ -16,7 +16,7 @@ def test_parse_dates_handles_mixed_formats():
     assert list(result["order_date"].dt.day) == [5, 5, 6]
 
 
-def test_clean_amounts_drops_null_and_negative():
+def test_clean_amounts_drops_null_and_negative() -> None:
     df = pd.DataFrame({"amount": ["120.50", "", "-50.00", "89.99"]})
 
     result = clean_amounts(df)
@@ -26,7 +26,7 @@ def test_clean_amounts_drops_null_and_negative():
     assert (result["amount"] >= 0).all()
 
 
-def test_clean_amounts_handles_formatting_noise():
+def test_clean_amounts_handles_formatting_noise() -> None:
     df = pd.DataFrame({"amount": ["1,234.50", "  99.99  ", "2,000"]})
 
     result = clean_amounts(df)
@@ -34,7 +34,7 @@ def test_clean_amounts_handles_formatting_noise():
     assert list(result["amount"]) == [1234.50, 99.99, 2000.0]
 
 
-def test_normalise_region_collapses_casing():
+def test_normalise_region_collapses_casing() -> None:
     df = pd.DataFrame({"region": ["North", "north", "NORTH", "south"]})
 
     result = normalise_region(df)
@@ -42,7 +42,7 @@ def test_normalise_region_collapses_casing():
     assert set(result["region"]) == {"North", "South"}
 
 
-def test_validate_returns_clean_frame():
+def test_validate_returns_clean_frame() -> None:
     df = pd.DataFrame(
         {
             "order_id": ["ORD001", "ORD002", "ORD003"],

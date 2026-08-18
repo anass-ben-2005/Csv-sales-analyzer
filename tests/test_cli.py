@@ -1,11 +1,13 @@
 """Smoke tests for the CLI."""
 
+from pathlib import Path
+
 from click.testing import CliRunner
 
 from cli import analyze
 
 
-def test_analyze_writes_report(tmp_path):
+def test_analyze_writes_report(tmp_path: Path) -> None:
     input_csv = tmp_path / "sales.csv"
     input_csv.write_text(
         "order_id,order_date,product,region,amount\n"
@@ -23,7 +25,7 @@ def test_analyze_writes_report(tmp_path):
     assert (out_dir / "report.json").exists()
 
 
-def test_analyze_handles_all_rows_filtered_out(tmp_path):
+def test_analyze_handles_all_rows_filtered_out(tmp_path: Path) -> None:
     """Every row is invalid (bad date, negative amount) — nothing survives
     validation, so every aggregate group is empty. The CLI should still
     finish cleanly rather than crash.

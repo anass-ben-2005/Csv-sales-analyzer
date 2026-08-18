@@ -5,8 +5,11 @@ from pathlib import Path
 
 import pandas as pd
 
+# A report is a set of named summary tables, e.g. {"revenue_by_product": df}.
+Summaries = dict[str, pd.DataFrame]
 
-def _format_cell(value: object) -> str:
+
+def _format_cell(value: float | int | str) -> str:
     """Format a cell value for display, rounding floats to 2 decimals."""
     if isinstance(value, float):
         return f"{value:,.2f}"
@@ -31,7 +34,7 @@ def _table_to_markdown(df: pd.DataFrame) -> str:
     )
 
 
-def to_markdown(summaries: dict[str, pd.DataFrame]) -> str:
+def to_markdown(summaries: Summaries) -> str:
     """Render all summary tables as a single Markdown report."""
     sections = ["# Sales Report"]
     for name, df in summaries.items():
@@ -40,13 +43,13 @@ def to_markdown(summaries: dict[str, pd.DataFrame]) -> str:
     return "\n\n".join(sections) + "\n"
 
 
-def to_json(summaries: dict[str, pd.DataFrame]) -> str:
+def to_json(summaries: Summaries) -> str:
     """Render all summary tables as a single JSON document."""
     payload = {name: df.to_dict(orient="records") for name, df in summaries.items()}
     return json.dumps(payload, indent=2, default=str)
 
 
-def write_report(summaries: dict[str, pd.DataFrame], out_dir: str) -> None:
+def write_report(summaries: Summaries, out_dir: str) -> None:
     """Write both the Markdown and JSON report into ``out_dir``."""
     out_path = Path(out_dir)
     out_path.mkdir(parents=True, exist_ok=True)
@@ -54,7 +57,7 @@ def write_report(summaries: dict[str, pd.DataFrame], out_dir: str) -> None:
     (out_path / "report.json").write_text(to_json(summaries), encoding="utf-8")
 
 
-def summary_line(summaries: dict[str, pd.DataFrame]) -> str:
+def summary_line(summaries: Summaries) -> str:
     """Build the one-line summary the CLI prints after writing a report.
 
     Guards against an empty ``revenue_by_product`` group — e.g. every row

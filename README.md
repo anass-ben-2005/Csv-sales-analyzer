@@ -125,6 +125,7 @@ pytest -q           # run the test suite
 ```
 
 CI runs both of these on every push and pull request via GitHub Actions.
+Every public function is fully type-hinted and documented with a docstring.
 
 ## Testing
 

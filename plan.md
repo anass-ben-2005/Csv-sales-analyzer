@@ -270,7 +270,7 @@ Check off as each step is completed and committed (by you).
 - [x] 16. fix: guard empty groups in reporter
 - [x] 17. test: encoding edge case
 - [x] 18. fix: encoding fallback in reader
-- [ ] 19. refactor: type hints and docstrings
+- [x] 19. refactor: type hints and docstrings
 - [ ] 20. chore: pin dependencies and tidy README
 
 ---
