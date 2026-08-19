@@ -205,12 +205,14 @@ jobs:
 
 ## 7. Definition of done
 
-- [ ] 20 commits, in the order in §2, spread across ~6 days.
-- [ ] GitHub Actions history shows the intended red/green pattern.
-- [ ] Final `HEAD` is green: `pytest -q` and `ruff check .` both pass.
-- [ ] `python cli.py analyze --input sample_data/messy_sales.csv --out reports/`
+- [x] 20 commits, in the order in §2, spread across ~6 days (Aug 14–19).
+- [x] GitHub Actions history shows the intended red/green pattern (verified
+      via the API after the date-redistribution rebase — see git history).
+- [x] Final `HEAD` is green: `pytest -q` and `ruff check .` both pass
+      (verified with the pinned `requirements.txt` in a clean venv).
+- [x] `python cli.py analyze --input sample_data/messy_sales.csv --out reports/`
       produces `reports/report.md` and `reports/report.json`.
-- [ ] Repo is public.
+- [x] Repo is public.
 
 ---
 
@@ -271,7 +273,7 @@ Check off as each step is completed and committed (by you).
 - [x] 17. test: encoding edge case
 - [x] 18. fix: encoding fallback in reader
 - [x] 19. refactor: type hints and docstrings
-- [ ] 20. chore: pin dependencies and tidy README
+- [x] 20. chore: pin dependencies and tidy README
 
 ---
 

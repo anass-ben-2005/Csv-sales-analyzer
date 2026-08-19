@@ -62,6 +62,9 @@ cd csv-sales-analyzer
 pip install -r requirements.txt
 ```
 
+Dependencies are pinned to exact versions in `requirements.txt` for
+reproducible installs.
+
 ## Usage
 
 ```bash
@@ -129,10 +132,10 @@ Every public function is fully type-hinted and documented with a docstring.
 
 ## Testing
 
-The test suite covers the reader, validator, aggregator, and reporter
-modules, including edge cases drawn directly from the messy sample data:
-mixed date formats, missing/negative amounts, inconsistent region casing,
-and non-UTF-8 input.
+The test suite covers the reader, validator, aggregator, reporter, and CLI,
+including edge cases drawn directly from the messy sample data: mixed date
+formats, missing/negative amounts, inconsistent region casing, non-UTF-8
+input, and an end-to-end run where every row gets filtered out.
 
 ```bash
 pytest -q
